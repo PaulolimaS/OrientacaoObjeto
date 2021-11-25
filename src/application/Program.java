@@ -1,6 +1,6 @@
 package application;
 
-import util.Calculator;
+import util.Product;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -11,17 +11,33 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter radius: ");
-        double radius = sc.nextDouble();
+        System.out.println("Enter product data: ");
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+        System.out.print("Price: ");
+        double price = sc.nextDouble();
+        Product product = new Product(name , price);
 
-        double c = Calculator.circumference(radius);
+        System.out.println();
+        System.out.println("Product data: " + product);
 
-        double v = Calculator.volume(radius);
+        System.out.println();
+        System.out.print("Enter the number of products to be added in stock: ");
+        int quantity = sc.nextInt();
+        product.addProducts(quantity);
 
-        System.out.printf("Circumference: %.2f%n",c);
-        System.out.printf("Volume: %.2f%n",v);
-        System.out.printf("PI value: %.2f%n",Calculator.pi);
+        System.out.println();
+        System.out.println("Updated data: " + product);
+
+        System.out.println();
+        System.out.print("Enter the number of products to be removed from stack ");
+        quantity = sc.nextInt();
+        product.removeProducts(quantity);
+
+        System.out.println();
+        System.out.println("Updated data: "+ product);
 
         sc.close();
+
     }
 }
